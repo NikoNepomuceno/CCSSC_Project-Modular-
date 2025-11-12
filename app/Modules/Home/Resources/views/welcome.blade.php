@@ -41,7 +41,7 @@
         <section>
             <div>
                 <h1>Soaring beyond limits.</h1>
-                <p>The official...</p>
+                <p>The official website of Gordon College - College of Computer Studies Student Council.</p>
                 <button>Visit Us</button>
             </div>
             <div>
