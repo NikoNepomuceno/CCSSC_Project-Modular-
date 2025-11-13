@@ -19,37 +19,39 @@
             </style>
         @endif
     </head>
-    <body class="bg-[#B13407] p-10 h-screen">
-        <nav class="flex justify-between text-white">
-            <!-- Logo Section -->
-            <div>
-                <h2 class="font-bold text-3xl">Phoenixes</h2>
-            </div>
-            <!-- Navigation Links -->
-            <div class="border border-white rounded-2xl w-1/3 flex items-center">
-                <ul class="flex justify-around w-full">
-                    <li>About Us</li>
-                    <li>Committees</li>
-                    <li>News</li>
-                </ul>
-            </div>
-            <!-- Search Field -->
-            <div>
-                <input class="h-full bg-white text-orange-800 font-medium rounded-2xl p-2" type="text" placeholder="Search Phoenixes">
-            </div>
-        </nav>
-        <section>
-            <div>
-                <h1>Soaring beyond limits.</h1>
-                <p>The official website of Gordon College - College of Computer Studies Student Council.</p>
-                <button>Visit Us</button>
-            </div>
-            <div>
+    <body class="bg-[#B13407] px-10 pt-10  h-screen">
+        <section class="flex flex-col h-full w-full">
+            <nav class="flex justify-between text-white">
+                <!-- Logo Section -->
                 <div>
-                    <h2>Sa Pagitan microfilm</h2>
-                    <label>Read more</label>
+                    <h2 class="font-bold text-3xl">Phoenixes</h2>
                 </div>
-            </div>
+                <!-- Navigation Links -->
+                <div class="border border-white rounded-2xl w-1/3 flex items-center">
+                    <ul class="flex justify-around w-full">
+                        <li>About Us</li>
+                        <li>Committees</li>
+                        <li>News</li>
+                    </ul>
+                </div>
+                <!-- Search Field -->
+                <div>
+                    <input class="h-full bg-white text-orange-800 font-medium rounded-2xl p-2" type="text" placeholder="Search Phoenixes">
+                </div>
+            </nav>
+            <section class="flex-1 flex flex-col">
+                <div class="mt-25">
+                    <h1 class="text-7xl font-bold mb-5">Soaring<br>beyond limits.</h1>
+                    <p class="text-xl mb-5">The official website of Gordon College - College of Computer Studies Student Council.</p>
+                    <button class="rounded-2xl px-13 py-1 bg-orange-800 text-white font-medium">Visit Us</button>
+                </div>
+                <div class="mt-auto">
+                    <div>
+                        <h2>Sa Pagitan microfilm</h2>
+                        <label>Read more</label>
+                    </div>
+                </div>
+            </section>
         </section>
     </body>
 </html>
