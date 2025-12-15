@@ -28,11 +28,25 @@ class PostPolicy
 
     /**
      * Determine if the user can create posts.
-     * Only authenticated users (organization users or admins) can create posts.
+     * Only editors (organization users with editor permission) or admins can create posts.
      */
     public function create(OrganizationUser|Admin|null $user): bool
     {
-        return $user !== null;
+        if ($user === null) {
+            return false;
+        }
+
+        // Admins can always create posts
+        if ($user instanceof Admin) {
+            return true;
+        }
+
+        // Only editor organization users can create posts
+        if ($user instanceof OrganizationUser) {
+            return $user->isEditor();
+        }
+
+        return false;
     }
 
     /**
@@ -51,9 +65,9 @@ class PostPolicy
             return true;
         }
 
-        // Organization users can only update their own posts
+        // Organization users can only update their own posts if they are editors
         if ($user instanceof OrganizationUser) {
-            return $user->id === $post->organization_user_id;
+            return $user->isEditor() && $user->id === $post->organization_user_id;
         }
 
         return false;
@@ -75,9 +89,9 @@ class PostPolicy
             return true;
         }
 
-        // Organization users can only delete their own posts
+        // Organization users can only delete their own posts if they are editors
         if ($user instanceof OrganizationUser) {
-            return $user->id === $post->organization_user_id;
+            return $user->isEditor() && $user->id === $post->organization_user_id;
         }
 
         return false;

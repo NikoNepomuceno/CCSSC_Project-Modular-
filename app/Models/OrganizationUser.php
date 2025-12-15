@@ -13,6 +13,9 @@ class OrganizationUser extends Authenticatable
     /** @use HasFactory<\Database\Factories\OrganizationUserFactory> */
     use HasFactory, Notifiable;
 
+    public const PERMISSION_VIEWER = 'viewer';
+    public const PERMISSION_EDITOR = 'editor';
+
     /**
      * The attributes that are mass assignable.
      *
@@ -24,6 +27,7 @@ class OrganizationUser extends Authenticatable
         'password',
         'position',
         'committee_id',
+        'permission',
     ];
 
     /**
@@ -47,6 +51,22 @@ class OrganizationUser extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    /**
+     * Determine if the organization user is an editor.
+     */
+    public function isEditor(): bool
+    {
+        return $this->permission === self::PERMISSION_EDITOR;
+    }
+
+    /**
+     * Determine if the organization user is a viewer.
+     */
+    public function isViewer(): bool
+    {
+        return $this->permission === self::PERMISSION_VIEWER;
     }
 
     /**

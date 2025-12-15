@@ -2,6 +2,7 @@
 
 use App\Modules\Admin\Http\Controllers\AuthController;
 use App\Modules\Admin\Http\Controllers\DashboardController;
+use App\Modules\Admin\Http\Controllers\OrganizationUserController;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix(config('admin.slug'))
@@ -22,6 +23,11 @@ Route::prefix(config('admin.slug'))
             Route::get('/sessions', [AuthController::class, 'sessions'])->name('admin.sessions');
             Route::post('/sessions/revoke-others', [AuthController::class, 'revokeOtherSessions'])->name('admin.sessions.revoke-others');
             Route::delete('/sessions/{sessionId}', [AuthController::class, 'revokeSession'])->name('admin.sessions.revoke');
+
+            // Organization users management
+            Route::resource('organization-users', OrganizationUserController::class)
+                ->except(['show'])
+                ->names('admin.organization-users');
         });
     });
 
