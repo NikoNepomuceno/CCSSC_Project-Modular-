@@ -215,8 +215,8 @@
         </main>
     </div>
 
-    <!-- Global Toast Component (persist across Turbo visits) -->
-    <div id="admin-toast-root" data-turbo-permanent>
+    <!-- Global Toast Component -->
+    <div id="admin-toast-root">
         <x-toast />
     </div>
 

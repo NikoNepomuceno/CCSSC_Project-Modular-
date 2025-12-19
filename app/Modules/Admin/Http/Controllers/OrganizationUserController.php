@@ -70,20 +70,27 @@ class OrganizationUserController extends Controller
     {
         Gate::authorize('create', OrganizationUser::class);
 
-        $validated = $request->validate([
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:organization_users,email'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'position' => ['required', 'string', 'max:255'],
-            'committee_id' => ['nullable', 'exists:committees,id'],
-            'permission' => ['required', 'in:viewer,editor'],
-        ]);
+        try {
+            $validated = $request->validate([
+                'name' => ['required', 'string', 'max:255'],
+                'email' => ['required', 'string', 'email', 'max:255', 'unique:organization_users,email'],
+                'password' => ['required', 'string', 'min:8', 'confirmed'],
+                'position' => ['required', 'string', 'max:255'],
+                'committee_id' => ['nullable', 'exists:committees,id'],
+                'permission' => ['required', 'in:viewer,editor'],
+            ]);
 
-        OrganizationUser::create($validated);
+            OrganizationUser::create($validated);
 
-        return redirect()
-            ->route('admin.organization-users.index')
-            ->with('success', 'Organization user created successfully.');
+            return redirect()
+                ->route('admin.organization-users.index')
+                ->with('success', 'Organization user created successfully.');
+        } catch (\Exception $e) {
+            return redirect()
+                ->back()
+                ->withInput()
+                ->with('error', 'Failed to create organization user. Please try again.');
+        }
     }
 
     /**
@@ -108,24 +115,31 @@ class OrganizationUserController extends Controller
     {
         Gate::authorize('update', $organizationUser);
 
-        $validated = $request->validate([
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:organization_users,email,' . $organizationUser->id],
-            'password' => ['nullable', 'string', 'min:8', 'confirmed'],
-            'position' => ['required', 'string', 'max:255'],
-            'committee_id' => ['nullable', 'exists:committees,id'],
-            'permission' => ['required', 'in:viewer,editor'],
-        ]);
+        try {
+            $validated = $request->validate([
+                'name' => ['required', 'string', 'max:255'],
+                'email' => ['required', 'string', 'email', 'max:255', 'unique:organization_users,email,' . $organizationUser->id],
+                'password' => ['nullable', 'string', 'min:8', 'confirmed'],
+                'position' => ['required', 'string', 'max:255'],
+                'committee_id' => ['nullable', 'exists:committees,id'],
+                'permission' => ['required', 'in:viewer,editor'],
+            ]);
 
-        if (empty($validated['password'])) {
-            unset($validated['password']);
+            if (empty($validated['password'])) {
+                unset($validated['password']);
+            }
+
+            $organizationUser->update($validated);
+
+            return redirect()
+                ->route('admin.organization-users.index')
+                ->with('success', 'Organization user updated successfully.');
+        } catch (\Exception $e) {
+            return redirect()
+                ->back()
+                ->withInput()
+                ->with('error', 'Failed to update organization user. Please try again.');
         }
-
-        $organizationUser->update($validated);
-
-        return redirect()
-            ->route('admin.organization-users.index')
-            ->with('success', 'Organization user updated successfully.');
     }
 
     /**
@@ -135,11 +149,17 @@ class OrganizationUserController extends Controller
     {
         Gate::authorize('delete', $organizationUser);
 
-        $organizationUser->delete();
+        try {
+            $organizationUser->delete();
 
-        return redirect()
-            ->route('admin.organization-users.index')
-            ->with('success', 'Organization user has been archived.');
+            return redirect()
+                ->route('admin.organization-users.index')
+                ->with('success', 'Organization user has been archived successfully.');
+        } catch (\Exception $e) {
+            return redirect()
+                ->back()
+                ->with('error', 'Failed to archive organization user. Please try again.');
+        }
     }
 }
 

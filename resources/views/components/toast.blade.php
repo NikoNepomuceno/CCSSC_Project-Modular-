@@ -13,27 +13,49 @@
             this.notifications = this.notifications.filter(n => n.id !== id)
         },
         init() {
-            // Session-based flash messages – ensure they are only shown once
-            @if (session('success'))
-                this.add('success', 'Success', '{{ addslashes(session('success')) }}');
-                @php(session()->forget('success'))
-            @endif
+            // Use a unique request identifier to ensure session messages are only processed once per request
+            // This prevents the success message from showing on every Turbo navigation
+            const requestId = '{{ uniqid('req_', true) }}';
+            const $el = this.$el;
+            const processedKey = 'toast_processed_' + requestId;
 
-            @if (session('error'))
-                this.add('error', 'Error', '{{ addslashes(session('error')) }}');
-                @php(session()->forget('error'))
-            @endif
+            // Check if we've already processed messages for this request
+            if (!sessionStorage.getItem(processedKey)) {
+                // Mark as processed
+                sessionStorage.setItem(processedKey, 'true');
 
-            @if (session('status'))
-                this.add('info', 'Info', '{{ addslashes(session('status')) }}');
-                @php(session()->forget('status'))
-            @endif
+                // Clean up old processed flags (keep only the last 10)
+                try {
+                    const keys = Object.keys(sessionStorage).filter(k => k.startsWith('toast_processed_'));
+                    if (keys.length > 10) {
+                        keys.slice(0, keys.length - 10).forEach(k => sessionStorage.removeItem(k));
+                    }
+                } catch (e) {
+                    // Ignore errors
+                }
 
-            @if ($errors->any())
-                @foreach ($errors->all() as $error)
-                    this.add('error', 'Error', '{{ addslashes($error) }}');
-                @endforeach
-            @endif
+                // Session-based flash messages – ensure they are only shown once per request
+                @if (session('success'))
+                    this.add('success', 'Success', '{{ addslashes(session('success')) }}');
+                    @php(session()->forget('success'))
+                @endif
+
+                @if (session('error'))
+                    this.add('error', 'Error', '{{ addslashes(session('error')) }}');
+                    @php(session()->forget('error'))
+                @endif
+
+                @if (session('status'))
+                    this.add('info', 'Info', '{{ addslashes(session('status')) }}');
+                    @php(session()->forget('status'))
+                @endif
+
+                @if ($errors->any())
+                    @foreach ($errors->all() as $error)
+                        this.add('error', 'Error', '{{ addslashes($error) }}');
+                    @endforeach
+                @endif
+            }
         }
     }" @notify.window="add($event.detail.type, $event.detail.title, $event.detail.message)"
     class="fixed top-4 right-4 z-50 flex flex-col gap-3 {{ $width }}">
