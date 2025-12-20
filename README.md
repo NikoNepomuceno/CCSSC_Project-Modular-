@@ -1,15 +1,70 @@
+## Getting Started
+
+### 1. Install PHP dependencies (backend)
+
+```sh
+composer install
+```
+
+### 2. Install Node.js dependencies (frontend)
+
+```sh
+npm install
+```
+
+### 3. Run database migrations (if needed)
+
+```sh
+php artisan migrate
+```
+
+### 4. Start the Laravel backend server
+
+```sh
+php artisan serve
+```
+
+Visit [http://localhost:8000](http://localhost:8000) in your browser.
+
+### 5. Start the Vite development server (for hot reload)
+
+```sh
+npm run dev
+```
+
+-   This enables automatic browser refresh for changes in `resources/js`, `resources/css`, and Blade files.
+-   Make sure your Node.js version is **20.19+** or **22.12+**.
+
+---
+
+## Quick Start (Full Workflow)
+
+```sh
+composer install
+npm install
+php artisan migrate
+php artisan serve
+npm run dev
+```
+
+-   Open [http://localhost:8000](http://localhost:8000) in your browser.
+-   Edit your frontend files and see changes instantly with hot reload.
+
+---
+
 ## Modular structure overview (feature-first)
 
-This project was restructured to a feature-first, modular layout under `app/Modules`. Each module owns its routes, controllers, and views. Example modules included:
+This project uses a feature-first, modular layout under `app/Modules`. Each module owns its routes, controllers, and views. Example modules included:
 
-- `Home` → serves `/`
-- `News` → serves `/newsPage`
+-   `Home` → serves `/`
+-   `News` → serves `/newsPage`
 
 ### What changed
-- Added PSR-4 autoload for `App\Modules\` in `composer.json`.
-- Added `App\Providers\ModulesServiceProvider` to auto-load module routes, views, translations, migrations, and config.
-- Registered the provider in `bootstrap/providers.php`.
-- Moved page views into module view namespaces and simplified `routes/web.php`.
+
+-   Added PSR-4 autoload for `App\Modules\` in `composer.json`.
+-   Added `App\Providers\ModulesServiceProvider` to auto-load module routes, views, translations, migrations, and config.
+-   Registered the provider in `bootstrap/providers.php`.
+-   Moved page views into module view namespaces and simplified `routes/web.php`.
 
 ### Where things live now
 
@@ -33,11 +88,13 @@ routes/web.php  → (left minimal) modules register their own routes
 
 ### How it works
 
-- On boot, `ModulesServiceProvider` scans `app/Modules/*` and for each module:
-  - Loads `routes/web.php` with `web` middleware
-  - Loads `routes/api.php` with `api` middleware (if present)
-  - Registers views from `Resources/views` under a kebab-case namespace of the module name (e.g., `Home` → `home`, `News` → `news`)
-  - Optionally loads translations (`Resources/lang`), migrations (`database/migrations`), and config (`Config/config.php`)
+-   On boot, `ModulesServiceProvider` scans `app/Modules/*` and for each module:
+    -   Loads `routes/web.php` with `web` middleware
+    -   Loads `routes/api.php` with `api` middleware (if present)
+    -   Registers views from `Resources/views` under a kebab-case namespace of the module name (e.g., `Home` → `home`, `News` → `news`)
+    -   Optionally loads translations (`Resources/lang`), migrations (`database/migrations`), and config (`Config/config.php`)
+
+---
 
 This lets you render module views via namespaced lookups, e.g.:
 
@@ -47,7 +104,8 @@ return view('news::index');     // from News module
 ```
 
 ### Add a new module (quick start)
-1) Create folders:
+
+1. Create folders:
 
 ```
 app/Modules/Blog/
@@ -56,7 +114,7 @@ app/Modules/Blog/
   routes/
 ```
 
-2) Controller `app/Modules/Blog/Http/Controllers/BlogController.php`:
+2. Controller `app/Modules/Blog/Http/Controllers/BlogController.php`:
 
 ```php
 <?php
@@ -68,7 +126,7 @@ class BlogController extends Controller {
 }
 ```
 
-3) Routes `app/Modules/Blog/routes/web.php`:
+3. Routes `app/Modules/Blog/routes/web.php`:
 
 ```php
 <?php
@@ -78,13 +136,13 @@ use App\Modules\Blog\Http\Controllers\BlogController;
 Route::get('/blog', [BlogController::class, 'index'])->name('blog.index');
 ```
 
-4) View `app/Modules/Blog/Resources/views/index.blade.php`:
+4. View `app/Modules/Blog/Resources/views/index.blade.php`:
 
 ```blade
 <h1>Blog</h1>
 ```
 
-5) Refresh and verify:
+5. Refresh and verify:
 
 ```
 composer dump-autoload
@@ -93,16 +151,17 @@ php artisan route:list --path=blog
 ```
 
 ### Commands you may need
-- Regenerate autoload and clear caches after adding/moving modules:
+
+-   Regenerate autoload and clear caches after adding/moving modules:
 
 ```
 composer dump-autoload && php artisan config:clear && php artisan route:clear && php artisan view:clear
 ```
 
 ### Notes
-- Shared layouts/partials can remain under `resources/views` or you can introduce a `Core` module for cross-cutting concerns.
-- Module view namespace is kebab-case of the folder name: `PaymentsGateway` → `payments-gateway::...`.
 
+-   Shared layouts/partials can remain under `resources/views` or you can introduce a `Core` module for cross-cutting concerns.
+-   Module view namespace is kebab-case of the folder name: `PaymentsGateway` → `payments-gateway::...`.
 
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
@@ -117,13 +176,13 @@ composer dump-autoload && php artisan config:clear && php artisan route:clear &&
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+-   [Simple, fast routing engine](https://laravel.com/docs/routing).
+-   [Powerful dependency injection container](https://laravel.com/docs/container).
+-   Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
+-   Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
+-   Database agnostic [schema migrations](https://laravel.com/docs/migrations).
+-   [Robust background job processing](https://laravel.com/docs/queues).
+-   [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
 
 Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
@@ -139,14 +198,14 @@ We would like to extend our thanks to the following sponsors for funding Laravel
 
 ### Premium Partners
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+-   **[Vehikl](https://vehikl.com)**
+-   **[Tighten Co.](https://tighten.co)**
+-   **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
+-   **[64 Robots](https://64robots.com)**
+-   **[Curotec](https://www.curotec.com/services/technologies/laravel)**
+-   **[DevSquad](https://devsquad.com/hire-laravel-developers)**
+-   **[Redberry](https://redberry.international/laravel-development)**
+-   **[Active Logic](https://activelogic.com)**
 
 ## Contributing
 
