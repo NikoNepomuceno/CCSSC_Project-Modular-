@@ -91,8 +91,13 @@ class SessionService
         }
 
         // Check inactivity timeout
-        $inactiveThreshold = $session->last_activity_at
-            ->addMinutes($session->inactivity_timeout_minutes);
+        $lastActivity = $session->last_activity_at?->copy();
+
+        if (!$lastActivity) {
+            return null;
+        }
+
+        $inactiveThreshold = $lastActivity->addMinutes($session->inactivity_timeout_minutes);
         if ($inactiveThreshold < now()) {
             return null;
         }
