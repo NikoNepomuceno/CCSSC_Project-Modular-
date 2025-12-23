@@ -34,45 +34,22 @@
             </div>
             <div>
                 <div>
-                    <div
-                        class="w-80 h-9 left-[1419px] top-[861px] absolute justify-start text-White-Text text-4xl font-extrabold font-['Inter'] leading-10">
-                        GGs CCS team in SkyDev’s MLBB compe</div>
-                    <div
-                        class="w-40 h-0 left-[1420px] top-[1001px] absolute outline outline-[3px] outline-offset-[-1.50px] outline-white">
-                    </div>
-                    <div
-                        class="w-80 left-[1419px] top-[1020.50px] absolute justify-start text-White-Text text-2xl font-medium font-['Inter'] leading-6">
-                        Read more →</div>
-                    <div
-                        class="w-80 h-9 left-[1004px] top-[861px] absolute justify-start text-White-Text text-4xl font-extrabold font-['Inter'] leading-10">
-                        CCS bags medal in SkyDev’s hackathon</div>
-                    <div
-                        class="w-40 h-0 left-[1005px] top-[1001px] absolute outline outline-[3px] outline-offset-[-1.50px] outline-white">
-                    </div>
-                    <div
-                        class="w-80 left-[1004px] top-[1020.50px] absolute justify-start text-White-Text text-2xl font-medium font-['Inter'] leading-6">
-                        Read more →</div>
-                    <div
-                        class="w-96 h-64 left-[557px] top-[827px] absolute bg-Color-2 rounded-tl-[40px] rounded-tr-[40px]">
-                    </div>
-                    <div
-                        class="w-80 h-9 left-[589px] top-[861px] absolute justify-start text-White-Text text-4xl font-extrabold font-['Inter'] leading-10">
-                        Sa Pagitan microfilm got 1st in RAITE</div>
-                    <div
-                        class="w-40 h-0 left-[590px] top-[1000.50px] absolute outline outline-[3px] outline-offset-[-1.50px] outline-white">
-                    </div>
-                    <div
-                        class="w-80 left-[589px] top-[1020px] absolute justify-start text-White-Text text-2xl font-medium font-['Inter'] leading-6">
-                        Read more →</div>
+                    <div>
+                   <div class="w-80 h-9 left-[1419px] top-[861px] absolute justify-start text-White-Text text-4xl font-extrabold font-['Inter'] leading-10">GGs CCS team in SkyDev’s MLBB compe</div>
+                    <div class="w-40 h-0 left-[1420px] top-[1001px] absolute outline outline-[3px] outline-offset-[-1.50px] outline-white"></div>
+                    <div class="w-80 left-[1419px] top-[1020.50px] absolute justify-start text-White-Text text-2xl font-medium font-['Inter'] leading-6">Read more →</div>
+                    <div class="w-80 h-9 left-[1004px] top-[861px] absolute justify-start text-White-Text text-4xl font-extrabold font-['Inter'] leading-10">CCS bags medal in SkyDev’s hackathon</div>
+                    <div class="w-40 h-0 left-[1005px] top-[1001px] absolute outline outline-[3px] outline-offset-[-1.50px] outline-white"></div>
+                    <div class="w-80 left-[1004px] top-[1020.50px] absolute justify-start text-White-Text text-2xl font-medium font-['Inter'] leading-6">Read more →</div>
+                    <div class="w-96 h-64 left-[557px] top-[827px] absolute bg-Color-2 rounded-tl-[40px] rounded-tr-[40px]"></div>
+                    <div class="w-80 h-9 left-[589px] top-[861px] absolute justify-start text-White-Text text-4xl font-extrabold font-['Inter'] leading-10">Sa Pagitan microfilm got 1st in RAITE</div>
+                    <div class="w-40 h-0 left-[590px] top-[1000.50px] absolute outline outline-[3px] outline-offset-[-1.50px] outline-white"></div>
+                    <div class="w-80 left-[589px] top-[1020px] absolute justify-start text-White-Text text-2xl font-medium font-['Inter'] leading-6">Read more →</div>
                     <div class="w-64 h-14 left-[141px] top-[702px] absolute bg-orange-900 rounded-[80px]"></div>
-                    <div
-                        class="w-44 left-[176px] top-[720px] absolute text-center justif-start text-white-Text text-2xl font bold font-['Inter'] leading-6">
-                        Visit us</div>
+                    <div class="w-44 left-[176px] top-[720px] absolute text-center justif-start text-white-Text text-2xl font bold font-['Inter'] leading-6"> Visit us</div>
                 </div>
             </div>
-        </div>
-    </section>
-    <x-footer />
-</body>
-
+        </section>
+    </body>
 </html>
+
