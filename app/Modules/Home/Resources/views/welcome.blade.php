@@ -24,55 +24,95 @@
     <section class="flex flex-col w-full flex-grow px-10 pt-10">
         <x-navbar class="mb-16" />
     </section>
-    <section class="relative flex-grow w-full px-10 pb-24">
-        <div class="relative min-h-[1200px]">
-            <div class="p-6 space-y-4">
-                <h1 class="font-bold text-3xl">Soaring beyond limits.</h1>
-                <div class="w-96 justify-start text-Text text-base font-normal font-['Inter'] leading-6">The
-                    official website of Gordon College - College of Computer Studies Student Council.</div>
-                <button class="bg-[#800000] text-white font-bold px-4 py-2 rounded-xl">Visit Us</button>
+    <section
+        class="relative w-full px-4 md:px-10 pb-0 max-w-[1920px] mx-auto min-h-[calc(100vh-80px)] flex flex-col justify-between">
+
+        {{-- Hero Text Section --}}
+        <div class="pt-20 lg:pt-32 p-4 lg:pl-10 max-w-4xl z-10 pointer-events-none">
+            <h1
+                class="font-bold text-6xl md:text-8xl lg:text-[7rem] text-white tracking-tighter leading-[0.9] mb-8 pointer-events-auto">
+                Soaring beyond<br>limits.
+            </h1>
+            <div
+                class="max-w-md text-white/90 text-lg md:text-xl font-normal font-sans leading-relaxed mb-10 pointer-events-auto">
+                The official website of Gordon College - College of Computer Studies Student Council.
             </div>
-            <div>
-                <div>
-                    <div
-                        class="w-80 h-9 left-[1419px] top-[861px] absolute justify-start text-White-Text text-4xl font-extrabold font-['Inter'] leading-10">
-                        GGs CCS team in SkyDev’s MLBB compe</div>
-                    <div
-                        class="w-40 h-0 left-[1420px] top-[1001px] absolute outline outline-[3px] outline-offset-[-1.50px] outline-white">
-                    </div>
-                    <div
-                        class="w-80 left-[1419px] top-[1020.50px] absolute justify-start text-White-Text text-2xl font-medium font-['Inter'] leading-6">
-                        Read more →</div>
-                    <div
-                        class="w-80 h-9 left-[1004px] top-[861px] absolute justify-start text-White-Text text-4xl font-extrabold font-['Inter'] leading-10">
-                        CCS bags medal in SkyDev’s hackathon</div>
-                    <div
-                        class="w-40 h-0 left-[1005px] top-[1001px] absolute outline outline-[3px] outline-offset-[-1.50px] outline-white">
-                    </div>
-                    <div
-                        class="w-80 left-[1004px] top-[1020.50px] absolute justify-start text-White-Text text-2xl font-medium font-['Inter'] leading-6">
-                        Read more →</div>
-                    <div
-                        class="w-96 h-64 left-[557px] top-[827px] absolute bg-Color-2 rounded-tl-[40px] rounded-tr-[40px]">
-                    </div>
-                    <div
-                        class="w-80 h-9 left-[589px] top-[861px] absolute justify-start text-White-Text text-4xl font-extrabold font-['Inter'] leading-10">
-                        Sa Pagitan microfilm got 1st in RAITE</div>
-                    <div
-                        class="w-40 h-0 left-[590px] top-[1000.50px] absolute outline outline-[3px] outline-offset-[-1.50px] outline-white">
-                    </div>
-                    <div
-                        class="w-80 left-[589px] top-[1020px] absolute justify-start text-White-Text text-2xl font-medium font-['Inter'] leading-6">
-                        Read more →</div>
-                    <div class="w-64 h-14 left-[141px] top-[702px] absolute bg-orange-900 rounded-[80px]"></div>
-                    <div
-                        class="w-44 left-[176px] top-[720px] absolute text-center justif-start text-white-Text text-2xl font bold font-['Inter'] leading-6">
-                        Visit us</div>
+            <button
+                class="pointer-events-auto bg-[#800000] text-white font-bold px-10 py-4 rounded-full text-xl hover:bg-[#600000] transition-colors shadow-lg hover:scale-105 active:scale-95 duration-300">
+                Visit Us
+            </button>
+        </div>
+
+        {{-- Cards Grid Section --}}
+        <div class="w-full mt-10 lg:mt-0 z-10">
+            {{-- Offset the grid to start from the middle/right --}}
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-6 w-full items-end">
+                {{-- Spacer columns for large screens --}}
+                <div class="hidden lg:block lg:col-span-4 xl:col-span-3"></div>
+
+                {{-- Actual Cards --}}
+                <div
+                    class="col-span-1 md:col-span-12 lg:col-span-8 xl:col-span-9 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-end">
+                    <x-breaking-card title="Sa Pagitan microfilm got 1st in RAITE" link="#" class="bg-[#8F2203]" />
+                    <x-breaking-card title="CCS bags medal in SkyDev’s hackathon" link="#" class="bg-[#8F2203]" />
+                    <x-breaking-card title="GGs CCS team in SkyDev’s MLBB compe" link="#" class="bg-[#8F2203]" />
                 </div>
             </div>
         </div>
     </section>
-    <x-footer />
+
+    {{-- Know More Section --}}
+    <section class="w-full bg-white py-24 px-4 md:px-10">
+        <div class="max-w-[1920px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12">
+            {{-- Left Content: Title + Image --}}
+            <div class="col-span-1 lg:col-span-8 space-y-12 pl-4 lg:pl-10">
+                {{-- Title --}}
+                <div>
+                    <h2
+                        class="text-6xl md:text-7xl font-bold font-['Instrument_Sans'] tracking-tight leading-none text-[#2A2A2A]">
+                        Know more <br>
+                        <span class="text-[#B13407]">about us.</span>
+                    </h2>
+                    <p class="mt-6 text-[#B13407] text-lg font-medium tracking-wide">
+                        Highlighting innovation and excellence, every step of the way.
+                    </p>
+                </div>
+
+                {{-- Content Area: Image + Text --}}
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+                    {{-- Image Placeholder --}}
+                    <div class="relative aspect-square bg-[#B13407] rounded-3xl overflow-hidden shadow-2xl p-1">
+                        <div class="w-full h-full bg-cover bg-center rounded-2xl"
+                            style="background-image: url('https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg'); background-size: contain; background-repeat: no-repeat; background-position: center; background-color: #2a2a2a;">
+                            {{-- Placeholder visual until user provides real asset --}}
+                        </div>
+                    </div>
+
+                    {{-- Text Content --}}
+                    <div class="space-y-6 text-[#2A2A2A] text-lg leading-relaxed font-sans mt-4">
+                        <p>The College of Computer Studies proudly congratulates its student filmmakers for securing
+                            First Runner-Up in the Micro Short Film Contest at the Regional Assembly on Information
+                            Technology Education in Cabanatuan City, Nueva Ecija.</p>
+                        <p>The entry “Sa Pagitan (Sumpa Kita)”, directed by Eizen Rodriguez, also received the People’s
+                            Choice Award and earned recognition for Best Actress, awarded to Ms. Erica Mae Camintoy
+                            (BSCS 2).</p>
+                        <p>These achievements highlight the talent and dedication of the cast and crew, bringing pride
+                            to the CCS community and the institution.</p>
+                    </div>
+                </div>
+            </div>
+
+            {{-- Right Side: Navigation Buttons --}}
+            <div class="col-span-1 lg:col-span-4 lg:pl-12 flex flex-col gap-4 mt-8 lg:mt-0">
+                <x-committee-button label="Executives" />
+                <x-committee-button label="Canaries" />
+                <x-committee-button label="Falcons" />
+                <x-committee-button label="Herons" />
+                <x-committee-button label="Nightingales" />
+                <x-committee-button label="Ravens" />
+            </div>
+        </div>
+    </section>
 </body>
 
 </html>
