@@ -20,7 +20,7 @@
     @endif
 </head>
 
-<body class="bg-[#B13407] min-h-screen flex flex-col font-sans antialiased">
+<body class="bg-cover bg-center bg-no-repeat min-h-screen flex flex-col font-sans antialiased" style="background-image: linear-gradient(to bottom, rgba(194, 65, 12, 0.85), rgba(250, 250, 250, 0)), url('{{ asset('images/homepage/background.png') }}');">
     <section class="flex flex-col w-full flex-grow px-10 pt-10">
         <x-navbar class="mb-16" />
     </section>
