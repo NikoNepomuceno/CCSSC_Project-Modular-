@@ -14,7 +14,7 @@
     <div class="hidden md:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
         <ul class="flex items-center justify-between gap-12 border border-white rounded-full px-10 py-3 w-max backdrop-blur-sm bg-white/5">
             <li>
-                <a href="#" class="text-white font-medium text-base hover:text-orange-100 transition-all duration-300 tracking-wide">Home</a>
+                <a href="/" class="text-white font-medium text-base hover:text-orange-100 transition-all duration-300 tracking-wide">Home</a>
             </li>
             <li>
                 <a href="#" class="text-white font-medium text-base hover:text-orange-100 transition-all duration-300 tracking-wide">About Us</a>
@@ -23,7 +23,7 @@
                 <a href="#" class="text-white font-medium text-base hover:text-orange-100 transition-all duration-300 tracking-wide">Committees</a>
             </li>
             <li>
-                <a href="#" class="text-white font-medium text-base hover:text-orange-100 transition-all duration-300 tracking-wide">News</a>
+                <a href="/news" class="text-white font-medium text-base hover:text-orange-100 transition-all duration-300 tracking-wide">News</a>
             </li>
         </ul>
     </div>
