@@ -25,7 +25,7 @@
         <x-navbar class="mb-16" />
     </section>
     <section
-        class="relative w-full px-4 md:px-10 pb-0 max-w-[1920px] mx-auto min-h-[calc(100vh-80px)] flex flex-col justify-between">
+        class="relative w-full px-4 md:px-25 pb-0 max-w-[1920px] mx-auto min-h-[calc(100vh-80px)] flex flex-col justify-between">
 
         {{-- Hero Text Section --}}
         <div class="pt-20 lg:pt-32 p-4 lg:pl-10 max-w-4xl z-10 pointer-events-none">
