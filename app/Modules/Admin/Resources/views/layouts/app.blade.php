@@ -50,6 +50,7 @@
                 $isDashboard = request()->routeIs('admin.dashboard');
                 $isPosts = request()->routeIs('admin.posts.*');
                 $isOrgUsers = request()->routeIs('admin.organization-users.*');
+                $isCommittees = request()->routeIs('admin.committees.*');
             @endphp
 
             <a href="{{ route('admin.dashboard') }}"
@@ -125,6 +126,28 @@
                 </div>
                 <span class="font-medium whitespace-nowrap transition-opacity duration-300"
                     x-show="sidebarOpen">Organization Users</span>
+            </a>
+
+            <!-- Committees -->
+             <a href="{{ route('admin.committees.index') }}"
+                class="group flex items-center gap-3 px-3 py-3 rounded-lg relative overflow-hidden {{ $isCommittees ? 'bg-[#18181b] text-white' : 'text-gray-400 hover:text-white hover:bg-[#18181b] transition-colors' }}">
+                @if ($isCommittees)
+                
+                <div class="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-8 bg-[#FF4400] rounded-r-full shadow-[0_0_10px_#FF440050]"></div>
+
+                @endif
+        
+                <div class="w-6 h-6 flex items-center justify-center {{ $isCommittees ? 'text-[#FF4400]' : '' }}">
+                    <!-- Users/Group Icon for Committee -->
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M18 21a8 8 0 0 0-16 0"/>
+                        <circle cx="10" cy="8" r="5"/>
+                        <path d="M22 20c0-3.37-2-6.5-4-8a5 5 0 0 0-.45-8.3"/>
+                    </svg>
+                </div>
+                <span class="font-medium whitespace-nowrap transition-opacity duration-300"
+                    x-show="sidebarOpen">Committees</span>
             </a>
 
             <!-- Profile (placeholder) -->

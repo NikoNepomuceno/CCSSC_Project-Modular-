@@ -4,6 +4,7 @@ use App\Modules\Admin\Http\Controllers\AuthController;
 use App\Modules\Admin\Http\Controllers\DashboardController;
 use App\Modules\Admin\Http\Controllers\OrganizationUserController;
 use App\Modules\Admin\Http\Controllers\PostController;
+use App\Modules\Admin\Http\Controllers\CommitteeController;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix(config('admin.slug'))
@@ -29,6 +30,10 @@ Route::prefix(config('admin.slug'))
             Route::resource('organization-users', OrganizationUserController::class)
                 ->except(['show'])
                 ->names('admin.organization-users');
+
+            // Committees management
+            Route::resource('committees',CommitteeController::class)
+                ->names('admin.committees');
 
             // Posts management
             Route::resource('posts', PostController::class)

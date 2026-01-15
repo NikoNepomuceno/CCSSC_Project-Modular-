@@ -16,6 +16,16 @@ return Application::configure(basePath: dirname(__DIR__))
             'jwt.auth' => \App\Http\Middleware\ValidateAccessToken::class,
             'api.csrf' => \App\Http\Middleware\VerifyApiCsrf::class,
         ]);
+
+        // Configure redirect for unauthenticated users
+        $middleware->redirectGuestsTo(function ($request) {
+            // Redirect admin routes to admin login
+            if (str_starts_with($request->path(), config('admin.slug', 'admin'))) {
+                return route('admin.login');
+            }
+
+            return '/';
+        });
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         //
