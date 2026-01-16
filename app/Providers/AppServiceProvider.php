@@ -2,8 +2,10 @@
 
 namespace App\Providers;
 
+use App\Models\Committee;
 use App\Models\OrganizationUser;
 use App\Models\Post;
+use App\Policies\CommitteePolicy;
 use App\Policies\OrganizationUserPolicy;
 use App\Policies\PostPolicy;
 use Illuminate\Support\Facades\Gate;
@@ -19,6 +21,7 @@ class AppServiceProvider extends ServiceProvider
     protected $policies = [
         Post::class => PostPolicy::class,
         OrganizationUser::class => OrganizationUserPolicy::class,
+        Committee::class => CommitteePolicy::class,
     ];
 
     /**
@@ -37,5 +40,6 @@ class AppServiceProvider extends ServiceProvider
         // Register policies
         Gate::policy(Post::class, PostPolicy::class);
         Gate::policy(OrganizationUser::class, OrganizationUserPolicy::class);
+        Gate::policy(Committee::class, CommitteePolicy::class);
     }
 }
